@@ -49,12 +49,82 @@
   line-height: 1.6;
 }
 
-.error-message {
-  color: #b91c1c;
+.card label {
+  display: block;
+  margin-top: 16px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.card input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  margin-top: 8px;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.button-row-small {
+  gap: 8px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #2563eb;
+  color: white;
+}
+
+.secondary-button {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.danger-button {
+  background: #ef4444;
+  color: white;
+}
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.client-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.client-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 16px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
   margin-top: 12px;
 }
 
-.card ul {
-  list-style: disc inside;
-  color: #374151;
+.error-message {
+  color: #b91c1c;
+  margin-top: 12px;
 }
