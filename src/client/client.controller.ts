@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, Query } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -17,8 +17,13 @@ export class ClientController {
     return this.clientService.findAll();
   }
 
+  @Get('search')
+  findByName(@Query('nome') nome: string) {
+    return this.clientService.findByName(nome);
+  }
+
   @Get('search/:nome')
-  findByName(@Param('nome') nome: string) {
+  findByNameParam(@Param('nome') nome: string) {
     return this.clientService.findByName(nome);
   }
 

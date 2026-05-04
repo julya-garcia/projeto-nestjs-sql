@@ -49,7 +49,8 @@ export async function deleteClient(id: number) {
 }
 
 export async function searchClients(nome: string) {
-  const response = await fetch(`/api/client/search/${encodeURIComponent(nome)}`);
+  const query = new URLSearchParams({ nome });
+  const response = await fetch(`/api/client/search?${query.toString()}`);
 
   if (!response.ok) {
     throw new Error(`Erro ao buscar cliente por nome: ${response.status}`);
