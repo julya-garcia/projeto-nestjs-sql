@@ -49,6 +49,11 @@
   line-height: 1.6;
 }
 
+.error-message {
+  color: #b91c1c;
+  margin-top: 12px;
+}
+
 .card ul {
   list-style: disc inside;
   color: #374151;

@@ -1,8 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { getClients } from "./api";
 
 function App() {
   const [username, setUsername] = useState("");
+  const [clients, setClients] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadClients() {
+      setLoading(true);
+      setError("");
+
+      try {
+        const clientsData = await getClients();
+        setClients(clientsData);
+      } catch (err) {
+        setError("Não foi possível carregar os clientes. Verifique se o backend está rodando.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadClients();
+  }, []);
 
   return (
     <div className="app-container">
@@ -25,12 +47,23 @@ function App() {
         </section>
 
         <section className="card">
-          <h2>Próximos passos</h2>
-          <ul>
-            <li>Conectar o React ao backend NestJS via API REST.</li>
-            <li>Mostrar clientes, usuários e autenticação.</li>
-            <li>Adicionar roteamento e formulários.</li>
-          </ul>
+          <h2>Clientes do backend</h2>
+          {loading && <p>Carregando clientes...</p>}
+          {error && <p className="error-message">{error}</p>}
+          {!loading && !error && (
+            <ul>
+              {clients.length > 0 ? (
+                clients.map((client) => (
+                  <li key={client.id ?? client.name ?? Math.random()}>
+                    <strong>{client.name ?? `Cliente ${client.id ?? "sem nome"}`}</strong>
+                    {client.email ? ` — ${client.email}` : ""}
+                  </li>
+                ))
+              ) : (
+                <li>Nenhum cliente encontrado.</li>
+              )}
+            </ul>
+          )}
         </section>
       </main>
     </div>
