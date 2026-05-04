@@ -1,13 +1,14 @@
-# 🚀 API NestJS com JWT e MySQL
+# 🚀 Projeto NestJS SQL com Interface React
 
 ## 📌 Descrição
 
-API REST desenvolvida com **NestJS**, utilizando **Sequelize** e **MySQL**, com autenticação via **JWT** e CRUD completo de clientes.
+API REST desenvolvida com **NestJS**, utilizando **Sequelize** e **MySQL**, com autenticação via **JWT** e CRUD completo de clientes. Inclui interface gráfica em **React** com TypeScript e Vite.
 
 ---
 
 ## 🛠️ Tecnologias
 
+### Backend
 * Node.js
 * NestJS
 * Sequelize
@@ -16,18 +17,82 @@ API REST desenvolvida com **NestJS**, utilizando **Sequelize** e **MySQL**, com 
 * bcrypt
 * TypeScript
 
+### Frontend
+* React 18
+* TypeScript
+* Vite
+* CSS Modules
+
 ---
 
 ## 📂 Estrutura
 
 ```
-src/
- ├── auth/
- ├── user/
- ├── client/
- ├── app.module.ts
- ├── main.ts
+/
+├── src/                    # Backend NestJS
+│   ├── auth/
+│   ├── user/
+│   ├── client/
+│   ├── app.module.ts
+│   └── main.ts
+├── frontend/               # Frontend React
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
 ```
+
+---
+
+## 🚀 Como executar
+
+### 1. Instalar dependências
+
+```bash
+# Instalar dependências do backend
+npm install
+
+# Instalar dependências do frontend
+cd frontend
+npm install
+cd ..
+```
+
+### 2. Configurar MySQL
+
+#### Opção A: XAMPP (Recomendado)
+1. Abra o **XAMPP Control Panel**
+2. Clique em **Start** no módulo **MySQL**
+3. No phpMyAdmin, crie o banco `projeto_nest`
+
+#### Opção B: Docker
+```bash
+docker run --name mysql-nest -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=projeto_nest -p 3306:3306 -d mysql:8.0
+```
+
+### 3. Executar o projeto
+
+#### Desenvolvimento (Backend + Frontend simultâneo)
+```bash
+npm run dev
+```
+
+#### Apenas Backend
+```bash
+npm run start:dev
+```
+
+#### Apenas Frontend
+```bash
+npm run frontend:dev
+```
+
+### 4. Acessar
+
+- **Frontend React**: http://localhost:5173
+- **Backend API**: http://localhost:3000
+- **API Docs**: http://localhost:3000/client
 
 ---
 
@@ -48,6 +113,7 @@ src/
 ### Login
 
 **POST** `/auth/login`
+
 
 **Resposta:**
 
